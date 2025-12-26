@@ -10,11 +10,16 @@ const REST_API_KEY = import.meta.env.VITE_REST_API_KEY;
 export const searchBooks = async (searchData: SearchData) => {
   const { search, detail, target, page } = searchData;
 
+  console.log("detail:", detail);
+  console.log("target:", target);
+
   let url = `https://dapi.kakao.com/v3/search/book?query=${search}&page=${page}`;
 
   if (detail) {
     url += `&target=${target}`;
   }
+
+  console.log("url:", url);
 
   const data = await fetch(url, {
     method: "GET",
